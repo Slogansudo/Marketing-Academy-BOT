@@ -10,6 +10,8 @@ from .dashboard_views import (
     AdminAdmissionSettingsView, AdminChannelSettingsView,
 )
 from . import viewsets as v
+from bot import views
+
 
 router = DefaultRouter()
 router.register("staff-users", v.AdminStaffUserViewSet, basename="admin-staff-user")
@@ -58,4 +60,8 @@ urlpatterns = [
     path("admission-settings/", AdminAdmissionSettingsView.as_view(), name="admin-admission-settings"),
     path("channel-settings/", AdminChannelSettingsView.as_view(), name="admin-channel-settings"),
     path("", include(router.urls)),
+
+    ####
+    path("bot/views/", AdminMeView.as_view(), name="admifn-me-view"),
+
 ]
